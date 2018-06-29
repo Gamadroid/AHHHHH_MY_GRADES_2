@@ -14,153 +14,63 @@ This program is to generate a strong password based on a key that a user inputs
 //declaring
 int keygen, total, chr1, next, inNext, i, jump = 0, x = 0, check;
 char key[50], pass[200], input[5];
-char nextchar = '\0', inNextchar,cont = '!';
+char nextchar = '\0', inNextchar, cont = '!';
 typedef int bool;
+
+char username[50], password[50];                                        //Universal
+int total_score;
+ 
+int p_length;                                                           //Part 1
+float length_score;
+
+int n, e, mix_score;
+int caps_count = 0, sc_count = 0, num_count = 0, lowercase_count = 0;   //Part 2
+
+float simy, simz;                                                       //Part 3
+float simx, upsim_score;  
+
+float sim1to3, sim3to1, simatoc, simctoa;                               //Part 4
+int seqch_score;    
+char incnum[4] = {'1','2','3','\0'};
+char decnum[4] = {'3','2','1','\0'};
+char incalpha[4] = {'a','b','c','\0'};
+char decalpha[4] = {'c','b','a','\0'};
+
 
 void two ();
 
-void clearInput () {
-    for (int i = 0; i<5; ++i)
-        input[i] = '\0';
-}
+void clearInput ();
 
-void addval () {
-    next = (int)key[x];
-    clearInput();
-        if (nextchar != '\0') {
-            input[0] = inNextchar;
-            nextchar = '\0';
-        }
-        else {
-            sprintf(input, "%d", inNext);
-        }
-        strcat(pass, input);
+void addval ();
 
-        if (x == 0) 
-            printf("%dst character = %s\n", x+1, input);     
-        else if (x == 1) 
-            printf("%dnd character = %s\n", x+1, input);
-        else if (x == 2) 
-            printf("%drd character = %s\n", x+1, input);
-        else 
-            printf("%dth character = %s\n", x+1, input);
-     
-    total = total + next;
-}
+void hex();
 
-void hex() {
-    inNext = next;
-    addval();
-//printf("%s\n", key);
-//printf("%c\n\n", key[x-1]);
-}
+void sine();
 
-void sine() {
-    inNext = sin(next)*100;
-    addval();
-}
+void spchar ();
 
-void spchar () {
-    nextchar   = key[x];
-    inNextchar = abs((char)next - 70) + 33;
-    addval();
-}
+void caps ();
 
-void caps () {
-    nextchar   = key[x];
-    inNextchar = toupper(nextchar);
-    addval();
-}
+void resi ();
 
-void resi () {
-    inNext = (1.0/next)*10000;
-    addval();
-}
+void checksum();
 
-void checksum() {
-    check    = total % 11;
-    nextchar = ((char)check + 96);
-    clearInput();
-    input[0] = nextchar;
-    strcat(pass, input);
-    printf("Checksum      = %s\n", input);
-}
+void one();
 
 void main(void) {
 
     //declaring local variables 
     int choice;
 
-    printf("Press [1] to generate your password or [2] to check the strength of your password.");
-    scanf("%d", choice);
-
     while (cont != 'N') {
+        
+        printf("Press [1] to generate your password or [2] to check the strength of your password. ");
+        scanf("%d", &choice);
+        
         if (choice == 1) {
-            x     = 0;
-            total = 0;
-            //clearing
-            for(int i = 0; i < 50; ++i) {
-                key[i] = '\0';
-            } 
-            for(int i = 0; i <200; ++i) {
-                pass[i] = '\0';
-                i++;
-            }
-
-            //user input
-            printf("Enter key: ");
-            scanf(" %s", &key);
-
-            //table headings
-            printf("\n\n\nGenerating password...");
-            
-            //calculation for first character
-            chr1 = (int)key[0];
-            addval();
-        //    printf("%15s", pass);
-
-            //calculating subsequent characters
-            jump = chr1 % 5;
-            while (key[x] != '\0' && key[x] != '\0') {
-            
-               // x++;
-              
-                switch (jump) {
-                    case 1 :
-        //                printf("1\n");
-                        hex();
-                    break;
-            
-                    case 2 : 
-        //                printf("2\n");
-                        sine();
-                    break;
-
-                    case 3 :
-        //                printf("3\n");
-                        spchar();
-                    break;
-
-                    case 4 :
-        //                printf("4\n");
-                        caps();
-                    break;
-
-                    case 0 :
-        //                printf("5\n");
-                        resi();
-                    break;
-                }
-            jump = next % 5;
-
-            x++;
-
-            }
-
-            checksum();
-            printf("\nSecure password is %s\n", pass);
-
+            one();
         }
+            
         else if (choice == 2) {
             //insert code here
             two();
@@ -239,17 +149,6 @@ Exit? Press ('N')
 */
 
 
-
-
-
-
-
-
-
-
-
-
-
 /*  Name: Reuben Thomas         Class: ES22
     
     Project Description: 
@@ -299,24 +198,6 @@ void two()
 {
 
     /*DECLARATION*/
-    char username[50], password[50];                                        //Universal
-    int total_score;
- 
-    int p_length;                                                           //Part 1
-    float length_score;
-
-    int n, e, mix_score;
-    int caps_count = 0, sc_count = 0, num_count = 0, lowercase_count = 0;   //Part 2
-
-    float simy, simz;                                                       //Part 3
-    int simx, upsim_score;  
-
-    float sim1to3, sim3to1, simatoc, simctoa;                               //Part 4
-    int seqch_score;    
-    char incnum[4] = {'1','2','3','\0'};
-    char decnum[4] = {'3','2','1','\0'};
-    char incalpha[4] = {'a','b','c','\0'};
-    char decalpha[4] = {'c','b','a','\0'};
 
 
 
@@ -521,9 +402,140 @@ void two()
         printf("\n\nAverage Password Security.\n");
     else
         printf("\n\nPoor Password Security!\n");
-        
-        
-  
 
 }
 
+
+void clearInput () {
+    for (int i = 0; i<5; ++i)
+        input[i] = '\0';
+}
+
+void addval () {
+    next = (int)key[x];
+    clearInput();
+        if (nextchar != '\0') {
+            input[0] = inNextchar;
+            nextchar = '\0';
+        }
+        else {
+            sprintf(input, "%d", inNext);
+        }
+        strcat(pass, input);
+
+        if (x == 0) 
+            printf("%dst character = %s\n", x+1, input);     
+        else if (x == 1) 
+            printf("%dnd character = %s\n", x+1, input);
+        else if (x == 2) 
+            printf("%drd character = %s\n", x+1, input);
+        else 
+            printf("%dth character = %s\n", x+1, input);
+     
+    total = total + next;
+}
+
+void hex() {
+    inNext = next;
+    addval();
+//printf("%s\n", key);
+//printf("%c\n\n", key[x-1]);
+}
+
+void sine() {
+    inNext = sin(next)*100;
+    addval();
+}
+
+void spchar () {
+    nextchar   = key[x];
+    inNextchar = abs((char)next - 70) + 33;
+    addval();
+}
+
+void caps () {
+    nextchar   = key[x];
+    inNextchar = toupper(nextchar);
+    addval();
+}
+
+void resi () {
+    inNext = (1.0/next)*10000;
+    addval();
+}
+
+void checksum() {
+    check    = total % 11;
+    nextchar = ((char)check + 96);
+    clearInput();
+    input[0] = nextchar;
+    strcat(pass, input);
+    printf("Checksum      = %s\n", input);
+}
+
+void one() {
+    x     = 0;
+    total = 0;
+    //clearing
+    for(int i = 0; i < 50; ++i) {
+        key[i] = '\0';
+    } 
+    for(int i = 0; i <200; ++i) {
+        pass[i] = '\0';
+        i++;
+    }
+
+    //user input
+    printf("Enter key: ");
+    scanf(" %s", &key);
+
+    //table headings
+    printf("\n\n\nGenerating password...");
+    
+    //calculation for first character
+    chr1 = (int)key[0];
+    addval();
+//    printf("%15s", pass);
+
+    //calculating subsequent characters
+    jump = chr1 % 5;
+    while (key[x] != '\0' && key[x] != '\0') {
+    
+       // x++;
+      
+        switch (jump) {
+            case 1 :
+//                printf("1\n");
+                hex();
+            break;
+    
+            case 2 : 
+//                printf("2\n");
+                sine();
+            break;
+
+            case 3 :
+//                printf("3\n");
+                spchar();
+            break;
+
+            case 4 :
+//                printf("4\n");
+                caps();
+            break;
+
+            case 0 :
+//                printf("5\n");
+                resi();
+            break;
+        }
+    jump = next % 5;
+
+    x++;
+
+    }
+
+    checksum();
+    printf("\nSecure password is %s\n", pass);
+
+}
