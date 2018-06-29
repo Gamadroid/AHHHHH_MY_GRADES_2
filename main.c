@@ -215,3 +215,342 @@ Secure password is 116116101861167f
 Continue? (Press any key)
 Exit? Press ('N')
 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*  Name: Reuben Thomas         Class: ES22
+    
+    Project Description: 
+    This program prompts and collects a user input username and password, and analyses
+    the length of password, mixture of character types, password similarity to username 
+    and presence of sequential alphabets and numbers in the password. The user is provided 
+    with a strength score out of 100 and suggested solutions to improve password strength 
+    in each of the 4 measured areas.
+    
+    Sample Dialogue(User enters username and password as 123):
+    PASSWORD STRENGTH CALCULATOR
+
+    Username: 123
+    Password: 123
+    
+    ______________________________________________________________________________________________________________________________
+    
+    PASSWORD LENGTH: 0/40 points
+    Insufficient Password Length!
+    Your password only has 3 characters. Please enter a password with more than 8 characters.
+
+    MIXTURE OF CHARACTERS: 0/30 points
+    Insufficient mix of characters!
+    Your password contains 0 lowercase letters, 0 capital letters, 3 numbers and 0 special characters.
+    Please use a variety of character types for maximum password strength.
+  
+    PASSWORD & USERNAME SIMILARITY 0/15 points
+    Your username and password are identical!
+    Please ensure username and password are different for maximum password strength.
+    
+    PRESENCE OF SEQUENTIAL CHARACTERS: 5/15 points
+    Your password contains sequential numbers!
+    Please do not include sequential characters for maximum password strength.
+    
+    _______________________________________________________________________________________________________________________________
+    
+    PASSWORD STRENGTH SCORE = 5/100
+    
+    Poor Password Security!
+
+    Research on strings from:
+    https://www.tutorialspoint.com/cprogramming/c_strings.htm 
+    
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+#include <math.h>
+
+void main(void)
+{
+
+    /*DECLARATION*/
+    char username[50], password[50];                                        //Universal
+    int total_score;
+ 
+    int p_length;                                                           //Part 1
+    float length_score;
+
+    int n, e, mix_score;
+    int caps_count = 0, sc_count = 0, num_count = 0, lowercase_count = 0;   //Part 2
+
+    float simy, simz;                                                       //Part 3
+    int simx, upsim_score;  
+
+    float sim1to3, sim3to1, simatoc, simctoa;                               //Part 4
+    int seqch_score;    
+    char incnum[4] = {'1','2','3','\0'};
+    char decnum[4] = {'3','2','1','\0'};
+    char incalpha[4] = {'a','b','c','\0'};
+    char decalpha[4] = {'c','b','a','\0'};
+
+
+
+
+
+                                      
+    /*PROMPT AND COLLECTING USERNAME AND PASSWORD*/
+    printf("PASSWORD STRENGTH CALCULATOR\n\n");
+    printf("Username: ");
+    scanf("%s", &username);
+    printf("Password: ");
+    scanf("%s", &password);
+    printf("\n________________________________________________________________________________________________________________________");
+
+
+
+
+
+
+    /*Part 1 - PASSWORD STRENGTH BY LENGTH*/
+    //finding length of password and calculating score
+    p_length = strlen(password);                           
+    length_score = ((p_length - 8.0)/12.0) * 40.0;
+    
+    //ensures score is within limits
+    if(length_score > 40)
+        length_score = 40;
+    else if(length_score < 0)
+        length_score = 0;
+    
+    //displaying output to user
+    printf("\n\nPASSWORD LENGTH: %.0f/40 points", length_score);
+
+    if(p_length <= 8)
+    {
+        printf("\nInsufficient Password Length!\n");
+        printf("Your password only has %d characters. ", p_length);
+        printf("Please enter a password with more than 8 characters.");
+        length_score = 0;
+    }
+    else
+    {
+        if(p_length < 15)
+        {
+            printf("\nModerate Password Length");
+        }
+        else
+        {
+            printf("\nExcellent Password Length!");
+        }       
+        printf("\nYour password has %d characters. ", p_length);
+    }
+
+
+
+
+
+    /*Part 2 - PASSWORD STRENGTH BY MIX OF CHARACTER TYPES*/
+    //counting number of each type of character
+    for(n = 0; n < (p_length + 1); n += 1)
+    {
+        e = password[n];
+        
+        if((e >= 65)&&(e <= 90))
+            caps_count += 1;
+        else if( ((e >= 32)&&(e <= 47)) || ((e >= 58)&&(e <= 64)) || ((e >= 91)&&(e <= 96)) || ((e >= 123)&&(e <=126)) )
+            sc_count += 1;
+        else if((e >= 48)&&(e <= 57))
+            num_count += 1;
+        else if((e >= 97)&&(e <= 122))
+            lowercase_count += 1;
+    }
+    
+    //determining the most common character type and calculating score of mixture
+    if( (lowercase_count >= num_count)&&(lowercase_count >= caps_count)&&(lowercase_count >= sc_count) )
+        mix_score = 5.0*(sc_count + num_count + caps_count);
+    else if( (num_count >= lowercase_count)&&(num_count >= caps_count)&&(num_count >= sc_count) )
+        mix_score = 5.0*(sc_count + lowercase_count + caps_count);
+    else if( (caps_count >= num_count)&&(caps_count >= lowercase_count)&&(caps_count >= sc_count) )
+        mix_score = 5.0*(sc_count + lowercase_count + num_count);
+    else
+        mix_score = 5.0*(lowercase_count + num_count + caps_count);
+    
+    //ensures score is within limits
+    if(mix_score > 30)
+        mix_score = 30;
+    
+    //displaying output to user
+    printf("\n\nMIXTURE OF CHARACTERS: %d/30 points", mix_score);
+    
+    if(mix_score < 5)
+    {
+        printf("\nInsufficient mix of characters!");
+        printf("\nYour password contains %d lowercase letters, %d capital letters, %d numbers and %d special characters. ", lowercase_count, caps_count, num_count, sc_count);
+        printf("\nPlease use a variety of character types for maximum password strength.");
+    }
+    else if(mix_score < 20)
+    {
+        printf("\nModerate mix of characters.");
+        printf("\nYour password contains %d lowercase letters, %d capital letters, %d numbers and %d special characters. ", lowercase_count, caps_count, num_count, sc_count);
+    }
+    else
+    {
+        printf("\nGood mix of characters. ");
+        printf("\nYour password contains %d lowercase letters, %d capital letters, %d numbers and %d special characters. ", lowercase_count, caps_count, num_count, sc_count);
+    }
+
+
+
+
+
+
+    /*Part 3 - PASSWORD STRENGTH BY SIMILARITY TO USERNAME*/
+    //assigning value to variable for similarities
+    simx = strcmp(username, password);
+    simy = strstr(username, password);
+    simz = strstr(password, username);
+    
+    //determining output to user, score calculation and display
+    if((simx == 0) || (simy != 0) || (simz != 0))
+    {
+        if(simx == 0)
+        {
+            upsim_score = 0;
+            printf("\n\nPASSWORD & USERNAME SIMILARITY: %d/15 points", upsim_score);
+            printf("\nYour username and password are identical!");
+        }
+        else
+        {
+            upsim_score = 5;
+            printf("\n\nPASSWORD & USERNAME SIMILARITY: %d/15 points", upsim_score);
+            printf("\nYour username and password are too similar!");
+        }
+        printf("\nPlease ensure username and password are different for maximum password strength.");
+        
+    }
+    else
+    {
+        upsim_score = 15;
+        printf("\n\nPASSWORD & USERNAME SIMILARITY: %d/15 points", upsim_score);
+        printf("\nThe username and password are sufficiently distinct.");
+    }
+
+
+
+
+
+
+    /*Part 4 - PASSWORD STRENGTH BY PRESENCE OF SEQUENTIAL NUMBERS AND ALPHABETS*/
+    //assigning value to variable for similarity
+    sim1to3 = strstr(password, incnum);
+    sim3to1 = strstr(password, decalpha);
+    simatoc = strstr(password, incalpha);
+    simctoa = strstr(password, decalpha);
+
+    //determining and displaying output to user and calculating score
+    if( ((sim1to3 != 0) || (sim3to1 != 0)) && ((simatoc != 0) || (simctoa != 0)) )
+        {
+            seqch_score = 0;
+            printf("\n\nPRESENCE OF SEQUENTIAL CHARACTERS: %d/15 points", seqch_score);
+            printf("\nYour password contains sequential numbers and alphabets!");
+            printf("\nPlease do not include sequential characters to maximum password strength.");
+        }
+    else if( (sim1to3 != 0) || (sim3to1 != 0) )
+        {
+            seqch_score = 5;
+            printf("\n\nPRESENCE OF SEQUENTIAL CHARACTERS: %d/15 points", seqch_score);
+            printf("\nYour password contains sequential numbers!");
+            printf("\nPlease do not include sequential characters to maximum password strength.");
+        }
+    else if( (simatoc != 0) || (simctoa != 0) )
+        {
+            seqch_score = 5;
+            printf("\n\nPRESENCE OF SEQUENTIAL CHARACTERS: %d/15 points", seqch_score);
+            printf("\nYour password contains sequential alphabets!");
+            printf("\nPlease do not include sequential characters for maximum password strength.");
+        }
+    else
+        {
+            seqch_score = 15;
+            printf("\n\nPRESENCE OF SEQUENTIAL CHARACTERS: %d/15 points", seqch_score);
+            printf("\nYour password does not contain any sequential numbers nor alphabets.");
+        }
+
+
+
+
+
+    /*FINAL SCORING*/
+    printf("\n\n________________________________________________________________________________________________________________________");
+   
+    total_score = length_score + upsim_score + seqch_score + mix_score;
+    
+    printf("\n\nPASSWORD STRENGTH SCORE = %d / 100", total_score);
+    
+    //score comment
+    if(total_score >= 90) 
+        printf("\n\nExcellent Password Security!\n");
+    else if(total_score >= 75)
+        printf("\n\nGood Password Security!\n");
+    else if(total_score >= 50)
+        printf("\n\nAverage Password Security.\n");
+    else
+        printf("\n\nPoor Password Security!\n");
+        
+        
+  
+
+}
+
