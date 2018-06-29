@@ -2,6 +2,9 @@
 This program is to generate a strong password based on a key that a user inputs 
 */
 
+// system clear
+// system("cls");
+
 #include<stdio.h>
 #include<math.h>
 #include<string.h>
@@ -88,7 +91,6 @@ void main(void) {
 
     printf("Press [1] to generate your password or [2] to check the strength of your password.");
     scanf("%d", choice);
-
 
     while (cont != 'N') {
         if (choice == 1) {
