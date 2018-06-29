@@ -1,5 +1,5 @@
 /* Name: Reuben Thomas & Joshua Wee             Class: ES22 
-This program is to generate a strong password based on a key that a user inputs 
+This program is to generate a strong password based on a key that a user inputs. 
 */
 
 // system clear
