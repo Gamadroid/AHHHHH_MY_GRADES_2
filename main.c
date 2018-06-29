@@ -5,10 +5,10 @@ This program is to generate a strong password based on a key that a user inputs
 // system clear
 // system("cls");
 
-#include<stdio.h>
-#include<math.h>
-#include<string.h>
-#include<ctype.h>
+#include <stdio.h>
+#include <math.h>
+#include <string.h>
+#include <ctype.h>
 
 
 //declaring
@@ -16,6 +16,8 @@ int keygen, total, chr1, next, inNext, i, jump = 0, x = 0, check;
 char key[50], pass[200], input[5];
 char nextchar = '\0', inNextchar,cont = '!';
 typedef int bool;
+
+void two ();
 
 void clearInput () {
     for (int i = 0; i<5; ++i)
@@ -161,6 +163,7 @@ void main(void) {
         }
         else if (choice == 2) {
             //insert code here
+            two();
         }
         else 
             printf("Invalid choice. Please key in again.");
@@ -292,56 +295,7 @@ Exit? Press ('N')
     
 */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#include <stdio.h>
-#include <string.h>
-#include <ctype.h>
-#include <math.h>
-
-void main(void)
+void two()
 {
 
     /*DECLARATION*/
