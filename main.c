@@ -2,6 +2,9 @@
 This program is to generate a strong password based on a key that a user inputs 
 */
 
+// system clear
+// system("cls");
+
 #include<stdio.h>
 #include<math.h>
 #include<string.h>
@@ -82,70 +85,86 @@ void checksum() {
 }
 
 void main(void) {
+
+    //declaring local variables 
+    int choice;
+
+    printf("Press [1] to generate your password or [2] to check the strength of your password.");
+    scanf("%d", choice);
+
     while (cont != 'N') {
-        x     = 0;
-        total = 0;
-        //clearing
-        for(int i = 0; i < 50; ++i) {
-            key[i] = '\0';
-        } 
-        for(int i = 0; i <200; ++i) {
-            pass[i] = '\0';
-            i++;
-        }
-
-        //user input
-        printf("Enter key: ");
-        scanf(" %s", &key);
-
-        //table headings
-        printf("\n\n\nGenerating password...");
-        
-        //calculation for first character
-        chr1 = (int)key[0];
-        addval();
-    //    printf("%15s", pass);
-
-        //calculating subsequent characters
-        jump = chr1 % 5;
-        while (key[x] != '\0' && key[x] != '\0') {
-        
-           // x++;
-          
-            switch (jump) {
-                case 1 :
-    //                printf("1\n");
-                    hex();
-                break;
-        
-                case 2 : 
-    //                printf("2\n");
-                    sine();
-                break;
-
-                case 3 :
-    //                printf("3\n");
-                    spchar();
-                break;
-
-                case 4 :
-    //                printf("4\n");
-                    caps();
-                break;
-
-                case 0 :
-    //                printf("5\n");
-                    resi();
-                break;
+        if (choice == 1) {
+            x     = 0;
+            total = 0;
+            //clearing
+            for(int i = 0; i < 50; ++i) {
+                key[i] = '\0';
+            } 
+            for(int i = 0; i <200; ++i) {
+                pass[i] = '\0';
+                i++;
             }
-        jump = next % 5;
 
-        x++;
+            //user input
+            printf("Enter key: ");
+            scanf(" %s", &key);
+
+            //table headings
+            printf("\n\n\nGenerating password...");
+            
+            //calculation for first character
+            chr1 = (int)key[0];
+            addval();
+        //    printf("%15s", pass);
+
+            //calculating subsequent characters
+            jump = chr1 % 5;
+            while (key[x] != '\0' && key[x] != '\0') {
+            
+               // x++;
+              
+                switch (jump) {
+                    case 1 :
+        //                printf("1\n");
+                        hex();
+                    break;
+            
+                    case 2 : 
+        //                printf("2\n");
+                        sine();
+                    break;
+
+                    case 3 :
+        //                printf("3\n");
+                        spchar();
+                    break;
+
+                    case 4 :
+        //                printf("4\n");
+                        caps();
+                    break;
+
+                    case 0 :
+        //                printf("5\n");
+                        resi();
+                    break;
+                }
+            jump = next % 5;
+
+            x++;
+
+            }
+
+            checksum();
+            printf("\nSecure password is %s\n", pass);
 
         }
+        else if (choice == 2) {
+            //insert code here
+        }
+        else 
+            printf("Invalid choice. Please key in again.");
 
-        checksum();
-        printf("\nSecure password is %s\n", pass);
         printf("\nContinue? (Press any key)\n");
         printf("Exit? (Press 'N')\n\n");
         cont = getch();
