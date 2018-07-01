@@ -60,18 +60,20 @@ void one();
 void main(void) {
 
     //declaring local variables 
-    int choice;
+    char choice;
 
     while (cont != 'N') {
         
-        printf("Press [1] to generate your password or [2] to check the strength of your password. ");
-        scanf("%d", &choice);
+        printf("SMARTPASS");
+        printf("\n\nPress A to generate a high security password from a key.");
+        printf("\nPress B to check existing password strength.\n");
+        choice = getch();
         
-        if (choice == 1) {
+        if ((choice == 'A') || (choice == 'a')) {
             one();
         }
             
-        else if (choice == 2) {
+        else if ((choice == 'B') || (choice == 'b')) {
             //insert code here
             two();
         }
@@ -82,7 +84,13 @@ void main(void) {
         printf("Exit? (Press 'N')\n\n");
         cont = getch();
         cont = toupper(cont);
+
     }
+    system("cls");
+    printf("Thank you for using SMARTPASS");
+    printf("\n\nA project by Joshua Wee and Reuben Thomas\n\n\n");
+
+
 }
 
 
@@ -197,7 +205,7 @@ Exit? Press ('N')
 void two()
 {
 
-    /*DECLARATION*/
+    system("cls");
 
 
 
@@ -474,6 +482,9 @@ void checksum() {
 }
 
 void one() {
+	
+	system("cls");
+
     x     = 0;
     total = 0;
     //clearing
