@@ -9,6 +9,7 @@ This program is to generate a strong password based on a key that a user inputs.
 #include <math.h>
 #include <string.h>
 #include <ctype.h>
+#include <conio.h>
 
 
 //declaring
@@ -27,7 +28,8 @@ int n, e, mix_score;
 int caps_count = 0, sc_count = 0, num_count = 0, lowercase_count = 0;   //Part 2
 
 float simy, simz;                                                       //Part 3
-float simx, upsim_score;  
+float simx;
+int upsim_score;
 
 float sim1to3, sim3to1, simatoc, simctoa;                               //Part 4
 int seqch_score;    
@@ -65,7 +67,8 @@ void main(void) {
     while (cont != 'N') {
         
         printf("SMARTPASS");
-        printf("\n\nPress A to generate a high security password from a key.");
+        printf("\n________________________________________________________________________________________________________________________");
+        printf("\nPress A to generate a high security password from a key.");
         printf("\nPress B to check existing password strength.\n");
         choice = getch();
         
@@ -213,12 +216,13 @@ void two()
 
                                       
     /*PROMPT AND COLLECTING USERNAME AND PASSWORD*/
-    printf("PASSWORD STRENGTH CALCULATOR\n\n");
-    printf("Username: ");
+    printf("SMARTPASS - Password Strength Check\n");
+    printf("________________________________________________________________________________________________________________________");
+    printf("\n\nUsername: ");
     scanf("%s", &username);
     printf("Password: ");
     scanf("%s", &password);
-    printf("\n________________________________________________________________________________________________________________________");
+    printf("________________________________________________________________________________________________________________________");
 
 
 
@@ -335,7 +339,7 @@ void two()
         }
         else
         {
-            upsim_score = 5;
+            upsim_score = 7;
             printf("\n\nPASSWORD & USERNAME SIMILARITY: %d/15 points", upsim_score);
             printf("\nYour username and password are too similar!");
         }
@@ -484,6 +488,8 @@ void checksum() {
 void one() {
 	
 	system("cls");
+	printf("SMARTPASS - Password Generator\n");
+	printf("________________________________________________________________________________________________________________________\n\n");
 
     x     = 0;
     total = 0;
