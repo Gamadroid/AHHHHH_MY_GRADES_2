@@ -65,7 +65,7 @@ void main(void) {
     char choice;
 
     while (cont != 'N') {
-        
+        system("cls");
         printf("SMARTPASS");
         printf("\n________________________________________________________________________________________________________________________");
         printf("\nPress A to generate a high security password from a key.");
@@ -81,7 +81,7 @@ void main(void) {
             two();
         }
         else 
-            printf("Invalid choice. Please key in again.");
+            printf("\nInvalid choice. Please key in again.");
 
         printf("\nContinue? (Press any key)\n");
         printf("Exit? (Press 'N')\n\n");
