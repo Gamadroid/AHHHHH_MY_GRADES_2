@@ -60,23 +60,27 @@ void one();
 void main(void) {
 
     //declaring local variables 
-    int choice;
+    char choice;
 
     while (cont != 'N') {
+        while (choice != '1' && choice != '2') {
+            printf("Press [1] to generate your password or [2] to check the strength of your password. \n");
+            //scanf("%d", &choice);
+            choice = getch();
+            if (choice != '1' && choice != '2')
+                printf("Invalid choice. Please key in again.\n\n");
+
+        }
         
-        printf("Press [1] to generate your password or [2] to check the strength of your password. ");
-        scanf("%d", &choice);
-        
-        if (choice == 1) {
+        if (choice == '1') {
             one();
         }
             
-        else if (choice == 2) {
-            //insert code here
+        else if (choice == '2') {
             two();
         }
-        else 
-            printf("Invalid choice. Please key in again.");
+
+        choice = 0;
 
         printf("\nContinue? (Press any key)\n");
         printf("Exit? (Press 'N')\n\n");
@@ -210,7 +214,7 @@ void two()
     scanf("%s", &username);
     printf("Password: ");
     scanf("%s", &password);
-    printf("\n________________________________________________________________________________________________________________________");
+    printf("\n________________________________________________________________________________________________________________________\n");
 
 
 
@@ -387,7 +391,7 @@ void two()
 
 
     /*FINAL SCORING*/
-    printf("\n\n________________________________________________________________________________________________________________________");
+    printf("\n\n________________________________________________________________________________________________________________________\n");
    
     total_score = length_score + upsim_score + seqch_score + mix_score;
     
