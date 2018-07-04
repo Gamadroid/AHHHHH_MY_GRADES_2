@@ -209,11 +209,6 @@ void two()
 {
 
     system("cls");
-
-
-
-
-
                                       
     /*PROMPT AND COLLECTING USERNAME AND PASSWORD*/
     printf("SMARTPASS - Password Strength Check\n");
@@ -262,10 +257,6 @@ void two()
         }       
         printf("\nYour password has %d characters. ", p_length);
     }
-
-
-
-
 
     /*Part 2 - PASSWORD STRENGTH BY MIX OF CHARACTER TYPES*/
     //counting number of each type of character
@@ -317,11 +308,6 @@ void two()
         printf("\nYour password contains %d lowercase letters, %d capital letters, %d numbers and %d special characters. ", lowercase_count, caps_count, num_count, sc_count);
     }
 
-
-
-
-
-
     /*Part 3 - PASSWORD STRENGTH BY SIMILARITY TO USERNAME*/
     //assigning value to variable for similarities
     simx = strcmp(username, password);
@@ -352,11 +338,6 @@ void two()
         printf("\n\nPASSWORD & USERNAME SIMILARITY: %d/15 points", upsim_score);
         printf("\nThe username and password are sufficiently distinct.");
     }
-
-
-
-
-
 
     /*Part 4 - PASSWORD STRENGTH BY PRESENCE OF SEQUENTIAL NUMBERS AND ALPHABETS*/
     //assigning value to variable for similarity
@@ -393,10 +374,6 @@ void two()
             printf("\n\nPRESENCE OF SEQUENTIAL CHARACTERS: %d/15 points", seqch_score);
             printf("\nYour password does not contain any sequential numbers nor alphabets.");
         }
-
-
-
-
 
     /*FINAL SCORING*/
     printf("\n\n________________________________________________________________________________________________________________________");
