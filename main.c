@@ -49,11 +49,11 @@ void hex(void);
 
 void sine(void);
 
-void spchar (void);
+void spchar(void);
 
-void caps (void);
+void caps(void);
 
-void resi (void);
+void resi(void);
 
 void checksum(void);
 
