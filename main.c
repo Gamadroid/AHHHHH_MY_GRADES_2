@@ -39,25 +39,25 @@ char incalpha[4] = {'a','b','c','\0'};
 char decalpha[4] = {'c','b','a','\0'};
 
 
-void two ();
+void two (void);
 
-void clearInput ();
+void clearInput (void);
 
-void addval ();
+void addval (void);
 
-void hex();
+void hex(void);
 
-void sine();
+void sine(void);
 
-void spchar ();
+void spchar (void);
 
-void caps ();
+void caps (void);
 
-void resi ();
+void resi (void);
 
-void checksum();
+void checksum(void);
 
-void one();
+void one(void);
 
 void main(void) {
 
