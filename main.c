@@ -51,25 +51,30 @@ char decnum[4] = {'3','2','1','\0'};
 char incalpha[4] = {'a','b','c','\0'};
 char decalpha[4] = {'c','b','a','\0'};
 
+<<<<<<< HEAD
 void two ();
+=======
 
-void clearInput ();
+void two (void);
+>>>>>>> ee2dcd0d766f3b51d7e297abbb200ac70aa4d254
 
-void addval ();
+void clearInput (void);
 
-void hex();
+void addval (void);
 
-void sine();
+void hex(void);
 
-void spchar ();
+void sine(void);
 
-void caps ();
+void spchar(void);
 
-void resi ();
+void caps(void);
 
-void checksum();
+void resi(void);
 
-void one();
+void checksum(void);
+
+void one(void);
 
 void main(void) {
 
@@ -116,11 +121,6 @@ void two()
 {
 
     system("cls");
-
-
-
-
-
                                       
     /*PROMPT AND COLLECTING USERNAME AND PASSWORD*/
     printf("SMARTPASS - Password Strength Check\n");
@@ -173,10 +173,6 @@ void two()
         printf("\nYour password has %d characters. ", p_length);
     }
 
-
-
-
-
     /*Part 2 - PASSWORD STRENGTH BY MIX OF CHARACTER TYPES*/
     //counting number of each type of character
     for(n = 0; n < (p_length + 1); n += 1)
@@ -227,11 +223,6 @@ void two()
         printf("\nYour password contains %d lowercase letters, %d capital letters, %d numbers and %d special characters. ", lowercase_count, caps_count, num_count, sc_count);
     }
 
-
-
-
-
-
     /*Part 3 - PASSWORD STRENGTH BY SIMILARITY TO USERNAME*/
     //assigning value to variable for similarities
     simx = strcmp(username, password);
@@ -262,11 +253,6 @@ void two()
         printf("\n\nPASSWORD & USERNAME SIMILARITY: %d/15 points", upsim_score);
         printf(" - Sufficiently distinct username & password");
     }
-
-
-
-
-
 
     /*Part 4 - PASSWORD STRENGTH BY PRESENCE OF SEQUENTIAL NUMBERS AND ALPHABETS*/
     //assigning value to variable for similarity
@@ -303,10 +289,6 @@ void two()
             printf("\n\nPRESENCE OF SEQUENTIAL CHARACTERS: %d/15 points", seqch_score);
             printf(" - Your password does not contain any sequential numbers nor alphabets.");
         }
-
-
-
-
 
     /*FINAL SCORING*/
     DARKGREY;
