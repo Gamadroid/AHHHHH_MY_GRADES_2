@@ -1,0 +1,108 @@
+
+/* Sample dialogue
+
+Sample dialogue 1
+
+Enter key: ________ (User enter predetermined key)
+
+
+Generating password...
+1st character = __ (Output depends on key)
+2nd character = __
+3rd character = __
+4th character = __
+5th character = __ (Number of characters depends on key)
+Checksum      = _  (Checksum depends on the characters in key)
+
+Secure password is _______________ (Depends on output from above)
+
+Continue? (Press any key)
+Exit? (Press 'N')
+
+
+Sample dialogue 2
+
+Enter key: password
+
+Generating password...
+1st character = 112
+2nd character = -88
+3rd character = 37
+4th character = 86
+5th character = 86
+6th character = O
+7th character = 111
+8th character = D
+Checksum      = c
+
+Secure password is 112-88378686011Dc
+
+Continue? (Press any key)
+Exit? (Press 'N')
+
+
+Sample dialogue 3
+
+Enter key: test01
+
+
+Generating password...
+1st character = 116
+2nd character = 116
+3rd character = 101
+4th character = 86
+5th character = 116
+6th character = 7
+Checksum      = f
+
+Secure password is 116116101861167f
+
+Continue? (Press any key)
+Exit? Press ('N')
+*/
+
+
+/*  Name: Reuben Thomas         Class: ES22
+    
+    Project Description: 
+    This program prompts and collects a user input username and password, and analyses
+    the length of password, mixture of character types, password similarity to username 
+    and presence of sequential alphabets and numbers in the password. The user is provided 
+    with a strength score out of 100 and suggested solutions to improve password strength 
+    in each of the 4 measured areas.
+    
+    Sample Dialogue(User enters username and password as 123):
+    PASSWORD STRENGTH CALCULATOR
+
+    Username: 123
+    Password: 123
+    
+    ______________________________________________________________________________________________________________________________
+    
+    PASSWORD LENGTH: 0/40 points
+    Insufficient Password Length!
+    Your password only has 3 characters. Please enter a password with more than 8 characters.
+
+    MIXTURE OF CHARACTERS: 0/30 points
+    Insufficient mix of characters!
+    Your password contains 0 lowercase letters, 0 capital letters, 3 numbers and 0 special characters.
+    Please use a variety of character types for maximum password strength.
+  
+    PASSWORD & USERNAME SIMILARITY 0/15 points
+    Your username and password are identical!
+    Please ensure username and password are different for maximum password strength.
+    
+    PRESENCE OF SEQUENTIAL CHARACTERS: 5/15 points
+    Your password contains sequential numbers!
+    Please do not include sequential characters for maximum password strength.
+    
+    _______________________________________________________________________________________________________________________________
+    
+    PASSWORD STRENGTH SCORE = 5/100
+    
+    Poor Password Security!
+
+    Research on strings from:
+    https://www.tutorialspoint.com/cprogramming/c_strings.htm 
+    
+*/
