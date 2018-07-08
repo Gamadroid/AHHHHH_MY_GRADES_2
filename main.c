@@ -463,10 +463,10 @@ void checksum() {
 }
 
 void one() {
-	
-	system("cls");
-	printf("SMARTPASS - Password Generator\n");
-	printf("________________________________________________________________________________________________________________________\n\n");
+    
+    system("cls");
+    printf("SMARTPASS - Password Generator\n");
+    printf("________________________________________________________________________________________________________________________\n\n");
 
     x     = 0;
     total = 0;
@@ -484,16 +484,15 @@ void one() {
     scanf(" %s", &key);
 
     //table headings
-    printf("\n\n\nGenerating password...");
+    printf("\n\n\nGenerating password...\n");
     
     //calculation for first character
     chr1 = (int)key[0];
-    addval();
-//    printf("%15s", pass);
+    //addval();
 
     //calculating subsequent characters
     jump = chr1 % 5;
-    while (key[x] != '\0' && key[x] != '\0') {
+    while (key[x] != '\0') {
     
        // x++;
       
