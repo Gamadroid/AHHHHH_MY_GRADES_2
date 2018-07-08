@@ -79,6 +79,7 @@ void main(void) {
 
     while (cont != 'N') {
         system("cls");
+        WHITE;
         printf("SMARTPASS");
         DARKGREY;
         printf("\n________________________________________________________________________________________________________________________");
@@ -153,7 +154,6 @@ void two()
 
     if(p_length <= 8)
     {
-        RED;
         printf(" - Insufficient Password Length!\n");
         WHITE;
         printf("Your password only has %d characters. ", p_length);
@@ -164,15 +164,12 @@ void two()
     {
         if(p_length < 15)
         {
-            BROWN;
             printf(" - Moderate Password Length");
         }
         else
         {
-            GREEN;
             printf(" - Excellent Password Length!");
         }       
-        WHITE;
         printf("\nYour password has %d characters. ", p_length);
     }
 
@@ -215,24 +212,18 @@ void two()
     
     if(mix_score < 5)
     {
-        RED;
         printf(" - Insufficient mix of characters!");
-        WHITE;
         printf("\nYour password contains %d lowercase letters, %d capital letters, %d numbers and %d special characters. ", lowercase_count, caps_count, num_count, sc_count);
         printf("\nPlease use a variety of character types for maximum password strength.");
     }
     else if(mix_score < 20)
     {
-        BROWN;
         printf(" - Moderate mix of characters.");
-        WHITE;
         printf("\nYour password contains %d lowercase letters, %d capital letters, %d numbers and %d special characters. ", lowercase_count, caps_count, num_count, sc_count);
     }
     else
     {
-        GREEN;
         printf(" - Good mix of characters. ");
-        WHITE;
         printf("\nYour password contains %d lowercase letters, %d capital letters, %d numbers and %d special characters. ", lowercase_count, caps_count, num_count, sc_count);
     }
 
@@ -253,18 +244,14 @@ void two()
         if(simx == 0)
         {
             upsim_score = 0;
-            WHITE;
             printf("\n\nPASSWORD & USERNAME SIMILARITY: %d/15 points", upsim_score);
-            RED;
-            printf(" - Your username and password are identical!");
+            printf(" - Identical username & password!");
         }
         else
         {
             upsim_score = 7;
-            WHITE;
             printf("\n\nPASSWORD & USERNAME SIMILARITY: %d/15 points", upsim_score);
-            BROWN;
-            printf(" - Your username and password are too similar!");
+            printf(" - Simiar username & password!");
         }
         printf("\nPlease ensure username and password are different for maximum password strength.");
         
@@ -272,11 +259,8 @@ void two()
     else
     {
         upsim_score = 15;
-        WHITE;
         printf("\n\nPASSWORD & USERNAME SIMILARITY: %d/15 points", upsim_score);
-        GREEN;
-        printf(" - The username and password are sufficiently distinct.");
-        WHITE;
+        printf(" - Sufficiently distinct username & password");
     }
 
 
@@ -296,34 +280,27 @@ void two()
         {
             seqch_score = 0;
             printf("\n\nPRESENCE OF SEQUENTIAL CHARACTERS: %d/15 points", seqch_score);
-            RED;
             printf(" - Your password contains sequential numbers and alphabets!");
-            WHITE;
             printf("\nPlease do not include sequential characters to maximum password strength.");
         }
     else if( (sim1to3 != 0) || (sim3to1 != 0) )
         {
             seqch_score = 5;
             printf("\n\nPRESENCE OF SEQUENTIAL CHARACTERS: %d/15 points", seqch_score);
-            BROWN;
             printf(" - Your password contains sequential numbers!");
-            WHITE;
             printf("\nPlease do not include sequential characters to maximum password strength.");
         }
     else if( (simatoc != 0) || (simctoa != 0) )
         {
             seqch_score = 5;
             printf("\n\nPRESENCE OF SEQUENTIAL CHARACTERS: %d/15 points", seqch_score);
-            BROWN;
             printf(" - Your password contains sequential alphabets!");
-            WHITE;
             printf("\nPlease do not include sequential characters for maximum password strength.");
         }
     else
         {
             seqch_score = 15;
             printf("\n\nPRESENCE OF SEQUENTIAL CHARACTERS: %d/15 points", seqch_score);
-            GREEN;
             printf(" - Your password does not contain any sequential numbers nor alphabets.");
         }
 
@@ -333,7 +310,7 @@ void two()
 
     /*FINAL SCORING*/
     DARKGREY;
-    printf("\n\n________________________________________________________________________________________________________________________");
+    printf("\n________________________________________________________________________________________________________________________");
     WHITE;
 
     total_score = length_score + upsim_score + seqch_score + mix_score;
@@ -444,7 +421,7 @@ void one() {
     scanf(" %s", &key);
 
     //table headings
-    printf("\n\n\nGenerating password...");
+    printf("\nGenerating password...");
     
     //calculation for first character
     chr1 = (int)key[0];
