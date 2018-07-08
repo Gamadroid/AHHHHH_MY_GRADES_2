@@ -51,12 +51,9 @@ char decnum[4] = {'3','2','1','\0'};
 char incalpha[4] = {'a','b','c','\0'};
 char decalpha[4] = {'c','b','a','\0'};
 
-<<<<<<< HEAD
 void two ();
-=======
 
 void two (void);
->>>>>>> ee2dcd0d766f3b51d7e297abbb200ac70aa4d254
 
 void clearInput (void);
 
