@@ -73,17 +73,18 @@ void main(void) {
         choice = getch();
         
         if ((choice == 'A') || (choice == 'a')) {
+            //password generator
             one();
         }
             
         else if ((choice == 'B') || (choice == 'b')) {
-            //insert code here
+            //password evaluator
             two();
         }
         else 
             printf("\nInvalid choice. Please key in again.");
 
-        printf("\nContinue? (Press any key)\n");
+        printf("\n\n\nContinue? (Press 'Y')\n");
         printf("Exit? (Press 'N')\n\n");
         cont = getch();
         cont = toupper(cont);
