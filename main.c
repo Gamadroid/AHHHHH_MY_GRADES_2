@@ -101,8 +101,8 @@ void main(void) {
         else 
             printf("\nInvalid choice. Please key in again.");
 
-        printf("\nContinue? (Press any key)\n");
-        printf("Exit? (Press 'N')\n\n");
+        printf("\nPress Y to continue.");
+        printf("\nPress N to exit.\n");
         cont = getch();
         cont = toupper(cont);
 
