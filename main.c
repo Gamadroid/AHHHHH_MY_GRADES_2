@@ -31,21 +31,21 @@ char key[50], pass[200], input[5];
 char nextchar = '\0', inNextchar, cont = '!';
 typedef int bool;
 
-char username[50], password[50];                                        //Universal
+char username[50], password[50];                                              //Universal
 int total_score;
  
-int p_length;                                                           //Part 1
+int p_length, bar1;                                                           //Part 1
 float length_score;
 
-int n, e, mix_score;
-int caps_count = 0, sc_count = 0, num_count = 0, lowercase_count = 0;   //Part 2
+int n, e, mix_score, bar2;
+int caps_count = 0, sc_count = 0, num_count = 0, lowercase_count = 0;          //Part 2
 
-float simy, simz;                                                       //Part 3
+float simy, simz;                                                              //Part 3
 float simx;
-int upsim_score;
+int upsim_score, bar3;
 
-float sim1to3, sim3to1, simatoc, simctoa;                               //Part 4
-int seqch_score;    
+float sim1to3, sim3to1, simatoc, simctoa;                                      //Part 4
+int seqch_score,bar4;    
 char incnum[4] = {'1','2','3','\0'};
 char decnum[4] = {'3','2','1','\0'};
 char incalpha[4] = {'a','b','c','\0'};
@@ -98,10 +98,16 @@ void main(void) {
             //insert code here
             two();
         }
-        else 
-            printf("\nInvalid choice. Please key in again.");
+        else {
+            system("cls");
+            printf("SMARTPASS");
+            DARKGREY;
+            printf("\n________________________________________________________________________________________________________________________");
+            WHITE;
+            printf("\n\nInvalid choice. Please key in again.");
+        }
 
-        printf("\nPress Y to continue.");
+        printf("\n\nPress Y to continue.");
         printf("\nPress N to exit.\n");
         cont = getch();
         cont = toupper(cont);
@@ -214,7 +220,7 @@ void two()
         printf(" - Poor Mix of Characters!");
         WHITE;
         printf("\nYour password contains %d lowercase letters, %d capital letters, %d numbers and %d special characters. ", lowercase_count, caps_count, num_count, sc_count);
-        printf("\nPlease use a variety of character types for maximum password strength.");
+        printf("\nPlease use a variety of character types for maximum password strength.");      
     }
     else if(mix_score < 20)
     {
