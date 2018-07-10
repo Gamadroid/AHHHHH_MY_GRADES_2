@@ -447,11 +447,10 @@ void one() {
     scanf(" %s", &key);
 
     //table headings
-    printf("\nGenerating password...");
+    printf("\nGenerating password...\n");
     
     //calculation for first character
     chr1 = (int)key[0];
-    addval();
 //    printf("%15s", pass);
 
     //calculating subsequent characters
