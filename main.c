@@ -495,3 +495,84 @@ void one() {
     printf("\nSecure password is %s\n", pass);
 
 }
+
+/* 
+SMARTPASS
+__________________________________________________________________________________
+Press A to generate a high security password from a key.
+Press B to check existing password strength.
+
+SMARTPASS - Password Generator
+__________________________________________________________________________________
+Enter key: password
+
+Generating password...
+1st character = 0
+2nd character = -88
+3rd character = 37
+4th character = 86
+5th character = 86
+6th character = O
+7th character = 111
+8th character = D
+Checksum      = c
+
+Secure password is 0-88378686O111Dc
+
+
+Press Y to continue.
+Press N to exit.
+
+
+
+
+
+ 
+SMARTPASS
+__________________________________________________________________________________
+Press A to generate a high security password from a key.
+Press B to check existing password strength.
+
+SMARTPASS - Password Strength Check
+__________________________________________________________________________________
+
+Username: test
+Password: password (password is blacked out for security) 
+__________________________________________________________________________________
+PASSWORD LENGTH: 0/40 points - Insufficient Password Length!
+Your password only has 8 characters. Please enter a password with more than 8 characters.
+
+MIXTURE OF CHARACTERS: 0/30 points - Poor Mix of Characters!
+Your password contains 8 lowercase letters, 0 capital letters, 0 numbers and 0 special characters.
+Please use a variety of character types for maximum password strength.
+
+PASSWORD & USERNAME SIMILARITY: 15/15 points - Sufficiently Distinct Username & Password
+
+PRESENCE OF SEQUENTIAL CHARACTERS: 15/15 points - No Sequential Numbers nor Alphabets Present
+__________________________________________________________________________________
+
+PASSWORD STRENGTH SCORE = 30 / 100
+
+Poor Password Security!
+
+Press Y to continue.
+Press N to exit.
+
+
+
+
+
+ 
+SMARTPASS
+__________________________________________________________________________________
+Press A to generate a high security password from a key.
+Press B to check existing password strength.
+
+SMARTPASS
+__________________________________________________________________________________
+Invalid choice. Please key in again.
+
+Press Y to continue.
+Press N to exit.
+
+*/
