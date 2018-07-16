@@ -45,7 +45,7 @@ float simx;
 int upsim_score, bar3;
 
 float sim1to3, sim3to1, simatoc, simctoa;                                      //Part 4
-int seqch_score,bar4;    
+int seqch_score, bar4;    
 char incnum[4] = {'1','2','3','\0'};
 char decnum[4] = {'3','2','1','\0'};
 char incalpha[4] = {'a','b','c','\0'};
@@ -72,6 +72,8 @@ void resi(void);
 void checksum(void);
 
 void one(void);
+
+void bar(int p);
 
 void main(void) {
 
@@ -180,6 +182,8 @@ void two()
         }       
         printf("\nYour password has %d characters. ", p_length);
     }
+    bar1 = (length_score / 40);
+    bar(bar1);
 
     /*Part 2 - PASSWORD STRENGTH BY MIX OF CHARACTER TYPES*/
     //counting number of each type of character
@@ -495,4 +499,14 @@ void one() {
     checksum();
     printf("\nSecure password is %s\n", pass);
 
+}
+
+void bar(int p)
+{
+    int n;
+
+    for(n = 0; n < p; n++)
+    {
+        printf("%c", 178);
+    }
 }
