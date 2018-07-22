@@ -51,9 +51,7 @@ char decnum[4] = {'3','2','1','\0'};
 char incalpha[4] = {'a','b','c','\0'};
 char decalpha[4] = {'c','b','a','\0'};
 
-void two ();
-
-void two (void);
+void two (char Pass[]);
 
 void clearInput (void);
 
@@ -91,14 +89,14 @@ void main(void) {
         printf("\n\nPress A to generate a high security password from a key.");
         printf("\nPress B to check existing password strength.\n");
         choice = getch();
+
         
         if ((choice == 'A') || (choice == 'a')) {
             one();
         }
             
         else if ((choice == 'B') || (choice == 'b')) {
-            //insert code here
-            two();
+            two('\0');
         }
         else {
             system("cls");
@@ -122,24 +120,41 @@ void main(void) {
 
 }
 
-void two()
+void two(char Pass[])
 {
 
     system("cls");
                                       
     /*PROMPT AND COLLECTING USERNAME AND PASSWORD*/
-    printf("SMARTPASS - Password Strength Check\n");
-    DARKGREY;
-    printf("________________________________________________________________________________________________________________________");
-    WHITE;
-    printf("\n\nUsername: ");
-    scanf("%s", &username);
-    printf("Password: ");
-    BLACK;
-    scanf("%s", &password);
-    DARKGREY;
-    printf("________________________________________________________________________________________________________________________");
-    WHITE;
+    if (Pass == '\0') {
+        printf("SMARTPASS - Password Strength Check\n");
+        DARKGREY;
+        printf("________________________________________________________________________________________________________________________");
+        WHITE;
+        printf("\n\nUsername: ");
+        scanf("%s", &username);
+        printf("Password: ");
+        BLACK;
+        scanf("%s", &password);
+        DARKGREY;
+        printf("________________________________________________________________________________________________________________________");
+        WHITE;
+    }
+    else {
+        printf("SMARTPASS - Password Strength Check\n");
+        DARKGREY;
+        printf("________________________________________________________________________________________________________________________");
+        WHITE;
+        printf("\n\nUsername: ");
+        scanf("%s", &username);
+        printf("Password has been generated");
+        strcpy(password, Pass);
+        printf("%s\n", password);
+        // add password key 
+        DARKGREY;
+        printf("________________________________________________________________________________________________________________________");
+        WHITE;
+    }
 
 
 
@@ -428,6 +443,8 @@ void checksum() {
 }
 
 void one() {
+
+    char checkpass;
     
     system("cls");
     printf("SMARTPASS - Password Generator\n");
@@ -498,9 +515,16 @@ void one() {
     checksum();
     printf("\nSecure password is %s\n", pass);
 
+    printf("\nWould you like to check your password strength? \n");
+    printf("Press Y to continue. \n");
+    printf("Press N to exit.\n");
+    checkpass = getch();
+
+    if (checkpass == 'y' || checkpass == 'Y') 
+        two(pass);
+
 }
 
-<<<<<<< HEAD
 void bar(int p)
 {
     int n;
@@ -510,7 +534,7 @@ void bar(int p)
         printf("%c", 178);
     }
 }
-=======
+
 /* 
 SMARTPASS
 __________________________________________________________________________________
@@ -591,4 +615,4 @@ Press Y to continue.
 Press N to exit.
 
 */
->>>>>>> 500d435bf84a16b3beeb1a6fcd570ff2ccee8c90
+
