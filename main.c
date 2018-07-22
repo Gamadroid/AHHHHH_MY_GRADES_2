@@ -25,47 +25,29 @@ This program is to generate a strong password based on a key that a user inputs.
 
 HANDLE whnd;
 
-//declaring
-int keygen, total, chr1, next, inNext, i, jump = 0, x = 0, check;
-char key[50], pass[200], input[5];
-char nextchar = '\0', inNextchar, cont = '!';
 typedef int bool;
 
-char username[50], password[50];                                              //Universal
-int total_score;
- 
-int p_length, bar1;                                                           //Part 1
-float length_score;
+//declaring
+int keygen, total, chr1, next, inNext, check;
+char key[50], pass[200], input[5];
+char nextchar = '\0', inNextchar, cont = '!';
 
-int n, e, mix_score, bar2;
-int caps_count = 0, sc_count = 0, num_count = 0, lowercase_count = 0;          //Part 2
-
-float simy, simz;                                                              //Part 3
-float simx;
-int upsim_score, bar3;
-
-float sim1to3, sim3to1, simatoc, simctoa;                                      //Part 4
-int seqch_score, bar4;    
-char incnum[4] = {'1','2','3','\0'};
-char decnum[4] = {'3','2','1','\0'};
-char incalpha[4] = {'a','b','c','\0'};
-char decalpha[4] = {'c','b','a','\0'};
 
 void two (char Pass[]);
 
 void clearInput (void);
 
-void addval (void);
+void addval (int X);
 
-void hex(void);
+void hex(int N);
 
-void sine(void);
+void sine(int N);
 
-void spchar(void);
+void spchar(int N);
 
-void caps(void);
+void caps(int N);
 
-void resi(void);
+void resi(int N);
 
 void checksum(void);
 
@@ -122,6 +104,28 @@ void main(void) {
 
 void two(char Pass[])
 {
+
+    //declaring local variables
+
+    char username[50], password[50];                                              //Universal
+    int total_score;
+     
+    int p_length, bar1;                                                           //Part 1
+    float length_score;
+
+    int n, e, mix_score, bar2;
+    int caps_count = 0, sc_count = 0, num_count = 0, lowercase_count = 0;          //Part 2
+
+    float simy, simz;                                                              //Part 3
+    float simx;
+    int upsim_score, bar3;
+
+    float sim1to3, sim3to1, simatoc, simctoa;                                      //Part 4
+    int seqch_score, bar4;    
+    char incnum[4] = {'1','2','3','\0'};
+    char decnum[4] = {'3','2','1','\0'};
+    char incalpha[4] = {'a','b','c','\0'};
+    char decalpha[4] = {'c','b','a','\0'};
 
     system("cls");
                                       
@@ -380,8 +384,8 @@ void clearInput () {
         input[i] = '\0';
 }
 
-void addval () {
-    next = (int)key[x];
+void addval (int X) {
+    next = (int)key[X];
     clearInput();
         if (nextchar != '\0') {
             input[0] = inNextchar;
@@ -392,45 +396,45 @@ void addval () {
         }
         strcat(pass, input);
 
-        if (x == 0) 
-            printf("%dst character = %s\n", x+1, input);     
-        else if (x == 1) 
-            printf("%dnd character = %s\n", x+1, input);
-        else if (x == 2) 
-            printf("%drd character = %s\n", x+1, input);
+        if (X == 0) 
+            printf("%dst character = %s\n", X+1, input);     
+        else if (X == 1) 
+            printf("%dnd character = %s\n", X+1, input);
+        else if (X == 2) 
+            printf("%drd character = %s\n", X+1, input);
         else 
-            printf("%dth character = %s\n", x+1, input);
+            printf("%dth character = %s\n", X+1, input);
      
     total = total + next;
 }
 
-void hex() {
+void hex(int N) {
     inNext = next;
-    addval();
+    addval(N);
 //printf("%s\n", key);
 //printf("%c\n\n", key[x-1]);
 }
 
-void sine() {
+void sine(int N) {
     inNext = sin(next)*100;
-    addval();
+    addval(N);
 }
 
-void spchar () {
-    nextchar   = key[x];
+void spchar (int N) {
+    nextchar   = key[N];
     inNextchar = abs((char)next - 70) + 33;
-    addval();
+    addval(N);
 }
 
-void caps () {
-    nextchar   = key[x];
+void caps (int N) {
+    nextchar   = key[N];
     inNextchar = toupper(nextchar);
-    addval();
+    addval(N);
 }
 
-void resi () {
+void resi (int N) {
     inNext = (1.0/next)*10000;
-    addval();
+    addval(N);
 }
 
 void checksum() {
@@ -445,6 +449,7 @@ void checksum() {
 void one() {
 
     char checkpass;
+    int jump = 0;
     
     system("cls");
     printf("SMARTPASS - Password Generator\n");
@@ -452,7 +457,7 @@ void one() {
     printf("________________________________________________________________________________________________________________________\n\n");
     WHITE;
 
-    x     = 0;
+    int x     = 0;
     total = 0;
     //clearing
     for(int i = 0; i < 50; ++i) {
@@ -477,33 +482,31 @@ void one() {
     //calculating subsequent characters
     jump = chr1 % 5;
     while (key[x] != '\0' && key[x] != '\0') {
-    
-       // x++;
       
         switch (jump) {
             case 1 :
 //                printf("1\n");
-                hex();
+                hex(x);
             break;
     
             case 2 : 
 //                printf("2\n");
-                sine();
+                sine(x);
             break;
 
             case 3 :
 //                printf("3\n");
-                spchar();
+                spchar(x);
             break;
 
             case 4 :
 //                printf("4\n");
-                caps();
+                caps(x);
             break;
 
             case 0 :
 //                printf("5\n");
-                resi();
+                resi(x);
             break;
         }
     jump = next % 5;
