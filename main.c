@@ -28,7 +28,7 @@ HANDLE whnd;
 typedef int bool;
 
 //declaring
-int keygen, total, chr1, next, inNext, check;
+int total, next, inNext, check;
 char key[50], pass[200], input[5];
 char nextchar = '\0', inNextchar, cont = '!';
 
@@ -411,8 +411,6 @@ void addval (int X) {
 void hex(int N) {
     inNext = next;
     addval(N);
-//printf("%s\n", key);
-//printf("%c\n\n", key[x-1]);
 }
 
 void sine(int N) {
@@ -449,7 +447,7 @@ void checksum() {
 void one() {
 
     char checkpass;
-    int jump = 0;
+    int jump = 0, chr1;
     
     system("cls");
     printf("SMARTPASS - Password Generator\n");
