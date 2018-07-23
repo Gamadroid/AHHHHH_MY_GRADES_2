@@ -2,8 +2,6 @@
 This program is to generate a strong password based on a key that a user inputs. 
 */
 
-// system clear
-// system("cls");
 
 #include <stdio.h>
 #include <math.h>
