@@ -51,9 +51,7 @@ void checksum(void);
 
 void one(void);
 
-void bar(int p);
-
-void barline(int x);
+void barline(float x, int colour, int length);
 
 void main(void) {
 
@@ -108,7 +106,7 @@ void two(char Pass[])
     //declaring local variables
 
     char username[50], password[50];                                              //Universal
-    int total_score;
+    int total_score, colour;
      
     int p_length, bar1;                                                           //Part 1
     float length_score;
@@ -184,6 +182,7 @@ void two(char Pass[])
         printf("Your password only has %d characters. ", p_length);
         printf("Please enter a password with more than 8 characters.");
         length_score = 0;
+        colour = 1;
     }
     else
     {
@@ -192,17 +191,18 @@ void two(char Pass[])
             BROWN;
             printf(" - Moderate Password Length");
             WHITE;
+            colour = 2;
         }
         else
         {
             GREEN;
             printf(" - Excellent Password Length!");
             WHITE;
+            colour = 3;
         }       
         printf("\nYour password has %d characters. ", p_length);
     }
-    bar1 = (length_score / 40);
-    bar(bar1);
+    barline((length_score / 40), colour, 60);
 
     /*Part 2 - PASSWORD STRENGTH BY MIX OF CHARACTER TYPES*/
     //counting number of each type of character
@@ -233,13 +233,14 @@ void two(char Pass[])
     //ensures score is within limits
     if(mix_score > 30)
         mix_score = 30;
-    
+
     //displaying output to user
     printf("\n\nMIXTURE OF CHARACTERS: %d/30 points", mix_score);
     
     if(mix_score < 5)
     {
         RED;
+        colour = 1;
         printf(" - Poor Mix of Characters!");
         WHITE;
         printf("\nYour password contains %d lowercase letters, %d capital letters, %d numbers and %d special characters. ", lowercase_count, caps_count, num_count, sc_count);
@@ -248,6 +249,7 @@ void two(char Pass[])
     else if(mix_score < 20)
     {
         BROWN;
+        colour = 2;
         printf(" - Moderate Mix of Characters");
         WHITE;
         printf("\nYour password contains %d lowercase letters, %d capital letters, %d numbers and %d special characters. ", lowercase_count, caps_count, num_count, sc_count);
@@ -255,10 +257,12 @@ void two(char Pass[])
     else
     {
         GREEN;
+        colour = 3;
         printf(" - Excellent Mix of Characters!");
         WHITE;
         printf("\nYour password contains %d lowercase letters, %d capital letters, %d numbers and %d special characters. ", lowercase_count, caps_count, num_count, sc_count);
     }
+    barline((mix_score / 30.0), colour, 60);
 
     /*Part 3 - PASSWORD STRENGTH BY SIMILARITY TO USERNAME*/
     //assigning value to variable for similarities
@@ -274,6 +278,7 @@ void two(char Pass[])
             upsim_score = 0;
             printf("\n\nPASSWORD & USERNAME SIMILARITY: %d/15 points", upsim_score);
             RED;
+            colour = 1;
             printf(" - Identical Username & Password!");
             WHITE;
         }
@@ -282,6 +287,7 @@ void two(char Pass[])
             upsim_score = 7;
             printf("\n\nPASSWORD & USERNAME SIMILARITY: %d/15 points", upsim_score);
             BROWN;
+            colour = 2;
             printf(" - Simiar Username & Password!");
             WHITE;
         }
@@ -293,9 +299,13 @@ void two(char Pass[])
         upsim_score = 15;
         printf("\n\nPASSWORD & USERNAME SIMILARITY: %d/15 points", upsim_score);
         GREEN;
+        colour = 3;
         printf(" - Sufficiently Distinct Username & Password");
         WHITE;
     }
+
+    barline((upsim_score / 15.0), colour, 60);
+
 
     /*Part 4 - PASSWORD STRENGTH BY PRESENCE OF SEQUENTIAL NUMBERS AND ALPHABETS*/
     //assigning value to variable for similarity
@@ -310,6 +320,7 @@ void two(char Pass[])
             seqch_score = 0;
             printf("\n\nPRESENCE OF SEQUENTIAL CHARACTERS: %d/15 points", seqch_score);
             RED;
+            colour = 1;
             printf(" - Sequential Numbers & Alphabets Present!");
             WHITE;
             printf("\nPlease do not include sequential characters to maximum password strength.");
@@ -319,6 +330,7 @@ void two(char Pass[])
             seqch_score = 5;
             printf("\n\nPRESENCE OF SEQUENTIAL CHARACTERS: %d/15 points", seqch_score);
             BROWN;
+            colour = 2;
             printf(" - Sequential Numbers Present!");
             WHITE;
             printf("\nPlease do not include sequential characters to maximum password strength.");
@@ -328,6 +340,7 @@ void two(char Pass[])
             seqch_score = 5;
             printf("\n\nPRESENCE OF SEQUENTIAL CHARACTERS: %d/15 points", seqch_score);
             BROWN;
+            colour = 2;
             printf(" - Sequential Alphabets Present!");
             WHITE;
             printf("\nPlease do not include sequential characters for maximum password strength.");
@@ -337,9 +350,12 @@ void two(char Pass[])
             seqch_score = 15;
             printf("\n\nPRESENCE OF SEQUENTIAL CHARACTERS: %d/15 points", seqch_score);
             GREEN;
+            colour = 3;
             printf(" - No Sequential Numbers nor Alphabets Present");
             WHITE;
         }
+
+    barline((seqch_score / 15.0), colour, 60);
 
     /*FINAL SCORING*/
     DARKGREY;
@@ -354,32 +370,32 @@ void two(char Pass[])
     if(total_score >= 90) 
     {
         GREEN;
+        colour = 3;
         printf("\n\nExcellent Password Security!\n");
-        void barline(total_score);
         WHITE;
     }
     else if(total_score >= 75)
     {
         GREEN;
+        colour = 3;
         printf("\n\nGood Password Security!\n");
-        void barline(total_score);
         WHITE;
     }
     else if(total_score >= 50)
     {
         BROWN;
+        colour = 2;
         printf("\n\nAverage Password Security.\n");
-        void barline(total_score);
         WHITE;
     }
     else
     {
         RED;
+        colour = 1;
         printf("\n\nPoor Password Security!\n");
-        void barline(total_score);
         WHITE;
     }
-
+    barline((total_score / 100.0), colour, 120);
 }
 
 
@@ -530,24 +546,26 @@ void one() {
 
 }
 
-void bar(int p)
+void barline(float x, int colour, int length)
 {
-    int n;
+    int number, n, i = 1;
 
-    for(n = 0; n < p; n++)
+    printf("\n");
+
+    if(colour == 1)
+        RED;
+    else if(colour == 2)
+        BROWN;
+    else if(colour == 3)
+        GREEN;
+
+    for(n = 1; n <= ((length * x)-2); n++)
     {
         printf("%c", 178);
     }
-}
-
-void barline(int x)
-{
-    int n;
-
-    for(n = 1; n <= (120 * (x / 100)); n++)
-    {
-        printf("%c", 178);
-    }
+    printf("%c", 177);
+    printf("%c", 176);
+    WHITE;
 }
 
 /* 
