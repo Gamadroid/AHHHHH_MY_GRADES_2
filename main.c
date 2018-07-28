@@ -53,6 +53,8 @@ void one(void);
 
 void bar(int p);
 
+void barline(int x);
+
 void main(void) {
 
     whnd = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -353,24 +355,28 @@ void two(char Pass[])
     {
         GREEN;
         printf("\n\nExcellent Password Security!\n");
+        void barline(total_score);
         WHITE;
     }
     else if(total_score >= 75)
     {
         GREEN;
         printf("\n\nGood Password Security!\n");
+        void barline(total_score);
         WHITE;
     }
     else if(total_score >= 50)
     {
         BROWN;
         printf("\n\nAverage Password Security.\n");
+        void barline(total_score);
         WHITE;
     }
     else
     {
         RED;
         printf("\n\nPoor Password Security!\n");
+        void barline(total_score);
         WHITE;
     }
 
@@ -529,6 +535,16 @@ void bar(int p)
     int n;
 
     for(n = 0; n < p; n++)
+    {
+        printf("%c", 178);
+    }
+}
+
+void barline(int x)
+{
+    int n;
+
+    for(n = 1; n <= (120 * (x / 100)); n++)
     {
         printf("%c", 178);
     }
