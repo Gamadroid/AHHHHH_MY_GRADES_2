@@ -109,7 +109,7 @@ void two(char Pass[])
     int total_score, colour;
      
     int p_length, bar1;                                                           //Part 1
-    float length_score;
+    int length_score;
 
     int n, e, mix_score, bar2;
     int caps_count = 0, sc_count = 0, num_count = 0, lowercase_count = 0;          //Part 2
@@ -149,7 +149,7 @@ void two(char Pass[])
         WHITE;
         printf("\n\nUsername: ");
         scanf("%s", &username);
-        printf("Password has been generated");
+        printf("Password Gnerated: ");
         strcpy(password, Pass);
         printf("%s\n", password);
         // add password key 
@@ -172,7 +172,7 @@ void two(char Pass[])
         length_score = 0;
     
     //displaying output to user
-    printf("\n\nPASSWORD LENGTH: %.0f/40 points", length_score);
+    printf("\n\nPASSWORD LENGTH: %d/40 points", length_score);
 
     if(p_length <= 8)
     {
@@ -202,7 +202,7 @@ void two(char Pass[])
         }       
         printf("\nYour password has %d characters. ", p_length);
     }
-    barline((length_score / 40), colour, 60);
+    barline((length_score / 40.0), colour, 60);
 
     /*Part 2 - PASSWORD STRENGTH BY MIX OF CHARACTER TYPES*/
     //counting number of each type of character
@@ -395,7 +395,7 @@ void two(char Pass[])
         printf("\n\nPoor Password Security!\n");
         WHITE;
     }
-    barline((total_score / 100.0), colour, 120);
+    barline((total_score / 100.0), colour, 119);
 }
 
 
@@ -548,7 +548,7 @@ void one() {
 
 void barline(float x, int colour, int length)
 {
-    int number, n, i = 1;
+    int number, n, i;
 
     printf("\n");
 
@@ -559,12 +559,29 @@ void barline(float x, int colour, int length)
     else if(colour == 3)
         GREEN;
 
-    for(n = 1; n <= ((length * x)-2); n++)
+    for(n = 0; n < ((length * x) + 0.00001); n++)
     {
         printf("%c", 178);
     }
-    printf("%c", 177);
-    printf("%c", 176);
+
+    if((length - n) >= 1)
+    {
+        printf("%c", 177);
+        n++;
+    }
+    
+    if((length - n) >= 2)
+    {
+        printf("%c", 176);
+        n++;
+    }
+
+    for(i = 0; i <= (length - n); i++)
+    {
+        DARKGREY;
+        printf("%c", 176);
+        WHITE;
+    }
     WHITE;
 }
 
