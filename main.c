@@ -425,7 +425,7 @@ void two(char Pass[])
     {
         printf(" - Repeating Characters Present!");
         LIGHTGREY;
-        printf("\nThere were %d occurences of a character repeated consequtively 3 times or more.", repch_count);
+        printf("\nYour password has %d occurences of a character repeated consequtively 3 times or more.", repch_count);
         printf("\nPlease do not include repeating characters to maximise password strength.");
         WHITE;
     }
