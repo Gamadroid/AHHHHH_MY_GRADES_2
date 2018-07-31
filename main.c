@@ -111,11 +111,10 @@ void two(char Pass[])
 
     //declaring local variables
 
-<<<<<<< HEAD
     char username[50], password[200];                                               //Universal
-=======
+
     char username[100], password[100];                                               //Universal
->>>>>>> eb7888c655c8d38bc63e969781cf67dba4b9fed5
+
     int total_score, colour;
      
     int p_length;                                                                  //Part 1
