@@ -113,8 +113,6 @@ void two(char Pass[])
 
     char username[50], password[200];                                               //Universal
 
-    char username[100], password[100];                                               //Universal
-
     int total_score, colour;
      
     int p_length;                                                                  //Part 1
