@@ -111,7 +111,7 @@ void two(char Pass[])
 
     //declaring local variables
 
-    char username[50], password[50];                                               //Universal
+    char username[50], password[200];                                               //Universal
     int total_score, colour;
      
     int p_length;                                                                  //Part 1
@@ -746,8 +746,6 @@ Press N to exit.
 
 
 
-
-?
 SMARTPASS
 __________________________________________________________________________________
 Press A to generate a high security password from a key.
