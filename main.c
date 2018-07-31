@@ -111,7 +111,11 @@ void two(char Pass[])
 
     //declaring local variables
 
+<<<<<<< HEAD
     char username[50], password[200];                                               //Universal
+=======
+    char username[100], password[100];                                               //Universal
+>>>>>>> eb7888c655c8d38bc63e969781cf67dba4b9fed5
     int total_score, colour;
      
     int p_length;                                                                  //Part 1
@@ -180,7 +184,7 @@ void two(char Pass[])
     else if(length_score < 0)
         length_score = 0;
     
-    //displaying output to user
+    //displaying score, comments and barline to user
     printf("\n\nPASSWORD LENGTH: %d/40 points", length_score);
 
     if(p_length <= 8)
@@ -232,7 +236,7 @@ void two(char Pass[])
             lowercase_count += 1;
     }
     
-    //determining the most common character type and calculating score of mixture
+    //determining the most common character type, comparing the ratio of all characters to the most common to calculate the score
     if( (lowercase_count >= num_count)&&(lowercase_count >= caps_count)&&(lowercase_count >= sc_count) )
         mix_score = 5.0*(sc_count + num_count + caps_count);
     else if( (num_count >= lowercase_count)&&(num_count >= caps_count)&&(num_count >= sc_count) )
@@ -246,7 +250,7 @@ void two(char Pass[])
     if(mix_score > 30)
         mix_score = 30;
 
-    //displaying output to user
+    //displaying score, comments and barline to user
     printf("\n\nMIXTURE OF CHARACTERS: %d/30 points", mix_score);
     
     if(mix_score < 5)
@@ -281,11 +285,11 @@ void two(char Pass[])
 
     /*Part 3 - PASSWORD STRENGTH BY SIMILARITY TO USERNAME*/
     //assigning value to variable for similarities
-    simx = strcmp(username, password);
-    simy = strstr(username, password);
-    simz = strstr(password, username);
+    simx = strcmp(username, password);                  //checks if username and password are identical
+    simy = strstr(username, password);                  //checks for the presence of username in the password
+    simz = strstr(password, username);                  //checks for the presence of password within the username
     
-    //determining output to user, score calculation and display
+    //determining output to user, score calculation and displaying results and comments to user
     if((simx == 0) || (simy != 0) || (simz != 0))
     {
         if(simx == 0)
@@ -326,12 +330,12 @@ void two(char Pass[])
 
     /*Part 4 - PASSWORD STRENGTH BY PRESENCE OF SEQUENTIAL NUMBERS AND ALPHABETS*/
     //assigning value to variable for similarity
-    sim1to3 = strstr(password, incnum);
-    sim3to1 = strstr(password, decalpha);
-    simatoc = strstr(password, incalpha);
-    simctoa = strstr(password, decalpha);
+    sim1to3 = strstr(password, incnum);             //checks for increasing numbers in password
+    sim3to1 = strstr(password, decnum);             //checks for decreasing numbers in password
+    simatoc = strstr(password, incalpha);           //checks for increasing alphabets in password
+    simctoa = strstr(password, decalpha);           //checks for decreasing alphabets in username
 
-    //determining and displaying output to user and calculating score
+    //determining and displaying score, comments, bargraph to user and calculating score
     if( ((sim1to3 != 0) || (sim3to1 != 0)) && ((simatoc != 0) || (simctoa != 0)) )
         {
             seqch_score = 0;
@@ -377,7 +381,7 @@ void two(char Pass[])
 
     barline((seqch_score / 10.0), colour, 50);
 
-    /*PART 5 - Test for repetetive numbers*/
+    /*PART 5 - TEST FOR REPATING CHARACTERS*/
     for(n = 0; n < p_length; n++)        
     {
         x = 0;
@@ -436,9 +440,6 @@ void two(char Pass[])
         WHITE;
     }
     barline((repch_score / 10.0), colour, 50);
-
-
-
 
 
     /*FINAL SCORING*/
@@ -655,7 +656,7 @@ void barline(float x, int colour, int length)
     else if(colour == 3)
         GREEN;
 
-    for(n = 0; n < ((length * x) + 0.00001); n++)
+    for(n = 0; n < ((length * x) + 0.00001); n++) 
     {
         printf("%c", 178);
     }
