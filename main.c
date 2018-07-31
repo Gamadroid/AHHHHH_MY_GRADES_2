@@ -1,5 +1,5 @@
 /* Name: Reuben Thomas & Joshua Wee             Class: ES22 
-This program is to generate a strong password based on a key that a user inputs. 
+This program is to generate a strong password based on a key that a user inputs and check its strength against the username. 
 */
 
 
@@ -30,7 +30,7 @@ int total, next, inNext, check;
 char key[50], pass[200], input[5];
 char nextchar = '\0', inNextchar, cont = '!';
 
-
+//fuction prototypes
 void two (char Pass[]);
 
 void clearInput (void);
@@ -60,6 +60,8 @@ void main(void) {
     char choice;
 
     while (cont != 'N') {
+
+        //first start
         system("cls");
         WHITE;
         printf("SMARTPASS");
@@ -72,13 +74,16 @@ void main(void) {
 
         
         if ((choice == 'A') || (choice == 'a')) {
+            //run password generator
             one();
         }
             
         else if ((choice == 'B') || (choice == 'b')) {
+            //run password checker
             two('\0');
         }
         else {
+            //invalid choice
             system("cls");
             printf("SMARTPASS");
             DARKGREY;
@@ -86,13 +91,14 @@ void main(void) {
             WHITE;
             printf("\n\nInvalid choice. Please key in again.");
         }
-
+        //check for end
         printf("\n\nPress Y to continue.");
         printf("\nPress N to exit.\n");
         cont = getch();
         cont = toupper(cont);
 
     }
+    //print end
     system("cls");
     printf("Thank you for using SMARTPASS");
     printf("\n\nA project by Joshua Wee and Reuben Thomas\n\n\n");
@@ -418,14 +424,14 @@ void two(char Pass[])
     {
         printf(" - No Repetition of Characters Present");
         LIGHTGREY;
-        printf("\nYour password has %d occurences of consequtive repetitive characters.", repch_count);
+        printf("\nYour password has %d occurrences of consequtive repetitive characters.", repch_count);
         WHITE;  
     }
     else
     {
         printf(" - Repeating Characters Present!");
         LIGHTGREY;
-        printf("\nYour password has %d occurences of a character repeated consequtively 3 times or more.", repch_count);
+        printf("\nYour password has %d occurrences of a character repeated consecutively 3 times or more.", repch_count);
         printf("\nPlease do not include repeating characters to maximise password strength.");
         WHITE;
     }
@@ -483,6 +489,7 @@ void clearInput () {
 }
 
 void addval (int X) {
+    //add value to password 
     next = (int)key[X];
     clearInput();
         if (nextchar != '\0') {
@@ -507,33 +514,39 @@ void addval (int X) {
 }
 
 void hex(int N) {
+    //convert to hexidecimal
     inNext = next;
     addval(N);
 }
 
 void sine(int N) {
+    //convert to ASCII, sin*100
     inNext = sin(next)*100;
     addval(N);
 }
 
 void spchar (int N) {
+    //change character to special character
     nextchar   = key[N];
     inNextchar = abs((char)next - 70) + 33;
     addval(N);
 }
 
 void caps (int N) {
+    //capitilize character
     nextchar   = key[N];
     inNextchar = toupper(nextchar);
     addval(N);
 }
 
 void resi (int N) {
+    //resiprocal ASCII key of character
     inNext = (1.0/next)*10000;
     addval(N);
 }
 
 void checksum() {
+    //generate checksum at the end of the password
     check    = total % 11;
     nextchar = ((char)check + 96);
     clearInput();
@@ -543,6 +556,8 @@ void checksum() {
 }
 
 void one() {
+
+    //password generator
 
     char checkpass;
     int jump = 0, chr1;
@@ -626,6 +641,9 @@ void one() {
 
 void barline(float x, int colour, int length)
 {
+
+    //draw barline
+
     int number, n, i;
 
     printf("\n");
@@ -694,7 +712,7 @@ Press N to exit.
 
 
 
- 
+?
 SMARTPASS
 __________________________________________________________________________________
 Press A to generate a high security password from a key.
@@ -729,7 +747,7 @@ Press N to exit.
 
 
 
- 
+?
 SMARTPASS
 __________________________________________________________________________________
 Press A to generate a high security password from a key.
@@ -743,4 +761,6 @@ Press Y to continue.
 Press N to exit.
 
 */
+
+
 
